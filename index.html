@@ -457,6 +457,18 @@ img, svg { max-width: 100%; display: block; }
 .callout strong { color: var(--brand-dark); font-weight: 800; }
 [data-theme="dark"] .callout strong { color: var(--brand-dark); }
 
+.note-inline {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--ink-3);
+    line-height: 1.9;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border-radius: var(--r-sm);
+    border: 1px solid var(--line);
+}
+.note-inline strong { color: var(--ink-2); font-weight: 700; }
+
 .timeline {
     margin: 26px 0 20px;
     padding: 30px 12px 20px;
@@ -744,18 +756,35 @@ img, svg { max-width: 100%; display: block; }
     line-height: 1.8;
 }
 
-.sig-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 16px;
-    margin-top: 24px;
+.sig-primary-row {
+    margin-bottom: 16px;
 }
+.sig-primary-row .sig-card {
+    min-height: 170px;
+}
+
+.sig-team-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--ink-4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 24px 0 12px;
+    padding-right: 4px;
+}
+
+.sig-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
 .sig-card {
-    padding: 28px 26px 26px;
+    padding: 26px 24px 24px;
     border-radius: var(--r-md);
     background: var(--surface);
     border: 1px solid var(--line);
-    min-height: 200px;
+    min-height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -784,26 +813,27 @@ img, svg { max-width: 100%; display: block; }
 }
 .sig-info { min-width: 0; }
 .sig-info .name {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     font-weight: 800;
     color: var(--ink-1);
     letter-spacing: -0.01em;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     line-height: 1.35;
 }
 .sig-info .role {
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     color: var(--ink-3);
     font-weight: 500;
+    line-height: 1.55;
 }
 
 .sig-blank {
     margin-top: auto;
-    padding-top: 20px;
+    padding-top: 18px;
     border-top: 1px solid var(--line);
 }
 .sig-blank .line {
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     color: var(--ink-4);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -811,19 +841,14 @@ img, svg { max-width: 100%; display: block; }
     margin-bottom: 8px;
 }
 .sig-blank .dotted {
-    height: 40px;
+    height: 36px;
     border-bottom: 1px solid var(--line-strong);
     margin-bottom: 6px;
 }
 .sig-blank .date {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--ink-4);
     font-weight: 500;
-}
-.sig-secondary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
 }
 
 .footer {
@@ -980,8 +1005,7 @@ img, svg { max-width: 100%; display: block; }
 
 @media (max-width: 900px) {
     .clause { padding: 28px 24px 30px; }
-    .sig-grid { grid-template-columns: 1fr; gap: 16px; }
-    .sig-secondary-grid { grid-template-columns: 1fr; gap: 14px; }
+    .sig-team-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
 }
 
 @media (max-width: 720px) {
@@ -1009,6 +1033,7 @@ img, svg { max-width: 100%; display: block; }
     .table-wrap thead th { padding: 11px 13px; font-size: 0.72rem; }
     .table-wrap tbody td { padding: 11px 13px; font-size: 0.8rem; }
     .appendices { grid-template-columns: 1fr; }
+    .sig-team-grid { grid-template-columns: 1fr; gap: 12px; }
     .sig-card { padding: 22px 18px; min-height: auto; }
     .sig-avatar { width: 38px; height: 38px; font-size: 0.74rem; }
     .sig-info .name { font-size: 0.9rem; }
@@ -1060,6 +1085,7 @@ img, svg { max-width: 100%; display: block; }
     .clause-body { font-size: 9pt !important; }
     .clause-body ul li { font-size: 9pt !important; margin-bottom: 5px !important; }
     .callout { background: #E6F1F3 !important; border-right: 3px solid #16808F !important; padding: 10px 14px !important; margin: 10px 0 !important; font-size: 8.5pt !important; border-radius: 4px !important; }
+    .note-inline { background: #F5F5F5 !important; border: 1px solid #ddd !important; padding: 8px 12px !important; font-size: 8pt !important; }
     .timeline { background: #F5F5F5 !important; border: 1px solid #ddd !important; padding: 12px 8px !important; margin: 12px 0 !important; break-inside: avoid; page-break-inside: avoid; overflow: visible !important; }
     .timeline-scroll { min-width: 0 !important; padding: 0 !important; flex-wrap: wrap !important; }
     .timeline-track { display: none !important; }
@@ -1088,16 +1114,18 @@ img, svg { max-width: 100%; display: block; }
     .signatures-head { margin-bottom: 12px !important; }
     .signatures-head .title { font-size: 7pt !important; }
     .signatures-head .desc { font-size: 8pt !important; }
-    .sig-grid { grid-template-columns: 1fr 1.05fr !important; gap: 10px !important; }
-    .sig-card { padding: 12px 14px !important; border: 1px solid #ddd !important; background: #FAFAFA !important; min-height: 110px !important; border-radius: 4px !important; }
+    .sig-primary-row { margin-bottom: 8px !important; }
+    .sig-primary-row .sig-card { min-height: auto !important; }
+    .sig-team-label { font-size: 6.5pt !important; margin: 10px 0 6px !important; }
+    .sig-team-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+    .sig-card { padding: 12px 12px 10px !important; border: 1px solid #ddd !important; background: #FAFAFA !important; min-height: 100px !important; border-radius: 4px !important; }
     .sig-avatar { width: 26px !important; height: 26px !important; font-size: 7pt !important; background: #16808F !important; }
-    .sig-info .name { font-size: 9pt !important; }
-    .sig-info .role { font-size: 7pt !important; }
+    .sig-info .name { font-size: 8.5pt !important; }
+    .sig-info .role { font-size: 6.5pt !important; line-height: 1.4 !important; }
     .sig-blank { padding-top: 8px !important; }
     .sig-blank .line { font-size: 6pt !important; margin-bottom: 4px !important; }
-    .sig-blank .dotted { height: 22px !important; }
-    .sig-blank .date { font-size: 6.5pt !important; }
-    .sig-secondary-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .sig-blank .dotted { height: 20px !important; }
+    .sig-blank .date { font-size: 6pt !important; }
     .footer { margin-top: 20px !important; padding: 14px 0 !important; }
     .footer-brand { font-size: 8.5pt !important; }
     .footer-sub { font-size: 7.5pt !important; }
@@ -1154,13 +1182,12 @@ img, svg { max-width: 100%; display: block; }
         <a href="#c8"><span class="num">۰۸</span>وب‌سایت‌ها و موتور رشد</a>
         <a href="#c9"><span class="num">۰۹</span>پنل نمایندگان شهرستان</a>
         <a href="#c10"><span class="num">۱۰</span>CRM و دستیار رایا</a>
-        <a href="#c11"><span class="num">۱۱</span>لایه هوشمند ایجنتیک</a>
-        <a href="#c12"><span class="num">۱۲</span>تحویل و انتقال دانش</a>
-        <a href="#c13"><span class="num">۱۳</span>تعهدات مالی</a>
-        <a href="#c14"><span class="num">۱۴</span>پشتیبانی رایگان</a>
-        <a href="#c15"><span class="num">۱۵</span>مالکیت فکری</a>
-        <a href="#c16"><span class="num">۱۶</span>محرمانگی</a>
-        <a href="#c17"><span class="num">۱۷</span>تضمین‌ها و شرایط عمومی</a>
+        <a href="#c11"><span class="num">۱۱</span>تحویل و انتقال دانش</a>
+        <a href="#c12"><span class="num">۱۲</span>تعهدات مالی</a>
+        <a href="#c13"><span class="num">۱۳</span>پشتیبانی رایگان</a>
+        <a href="#c14"><span class="num">۱۴</span>مالکیت فکری</a>
+        <a href="#c15"><span class="num">۱۵</span>محرمانگی</a>
+        <a href="#c16"><span class="num">۱۶</span>تضمین‌ها و شرایط عمومی</a>
         <a href="#appendices"><span class="num">پ</span>پیوست‌ها</a>
         <a href="#signatures"><span class="num">✎</span>امضاها</a>
     </nav>
@@ -1267,8 +1294,11 @@ img, svg { max-width: 100%; display: block; }
                 <li><strong>دو وب‌سایت اختصاصی (شرکتی و فروشگاهی):</strong> با طراحی کاملاً اختصاصی، سئوی پیشرفته و کنترل کامل از ERP مرکزی.</li>
                 <li><strong>پنل اختصاصی نمایندگان شهرستان:</strong> توانمندسازی نمایندگان برای مدیریت مستقل سوپرمارکت‌های حوزه خود.</li>
                 <li><strong>دستیار هوشمند رایا:</strong> دستیاری که به‌صورت ۲۴ ساعته با کاربران گفتگو می‌کند، لیدها را ثبت کرده و به تیم فروش اطلاع می‌دهد.</li>
-                <li><strong>لایه هوشمند ایجنتیک (AI Agentic Layer):</strong> در فاز دوم و در بازه پشتیبانی، به‌صورت سفارشی بر اساس نیاز واقعی هر دپارتمان.</li>
             </ul>
+
+            <p class="note-inline">
+                <strong>یادداشت:</strong> بررسی و پیاده‌سازی راهکارهای پیشرفته هوش مصنوعی، پس از استقرار کامل سیستم و در قالب توافق مستقل، در دستور کار طرفین قرار خواهد گرفت.
+            </p>
         </div>
     </article>
 
@@ -1289,10 +1319,9 @@ img, svg { max-width: 100%; display: block; }
                 <li>برگزاری جلسات دوره‌ای (آنلاین یا حضوری) با نمایندگان کارفرما و اعمال بازخوردها در روند اجرا.</li>
                 <li>تضمین کیفیت کد و اجرای تست‌های واحد، یکپارچه، نفوذ و بار مطابق با استانداردهای صنعت نرم‌افزار.</li>
                 <li>تحویل سورس‌کد کامل، دسترسی Repository، مالکیت دیتابیس و تمام دسترسی‌های مدیریتی به کارفرما در پایان پروژه.</li>
-                <li>رعایت کامل محرمانگی اطلاعات کارفرما مطابق با ماده ۱۶ این قرارداد.</li>
+                <li>رعایت کامل محرمانگی اطلاعات کارفرما مطابق با ماده ۱۵ این قرارداد.</li>
                 <li>استقرار سیستم در زیرساخت کارفرما و آموزش دپارتمان‌های مختلف در بازه یک ماهه پس از تحویل نهایی.</li>
-                <li>ارائه پشتیبانی رایگان ۶ ماهه (نیمه اول سال ۱۴۰۶) مطابق با ماده ۱۴ این قرارداد.</li>
-                <li>پیاده‌سازی ایجنت‌های هوشمند ایجنتیک (فاز دوم) در بازه پشتیبانی، بر اساس نیاز واقعی کارفرما.</li>
+                <li>ارائه پشتیبانی رایگان ۶ ماهه (نیمه اول سال ۱۴۰۶) مطابق با ماده ۱۳ این قرارداد.</li>
             </ul>
         </div>
     </article>
@@ -1311,11 +1340,11 @@ img, svg { max-width: 100%; display: block; }
             <ul>
                 <li>ارائه مستندات، داده‌های فروش، اطلاعات انبار، لیست مشتریان و هر داده موردنیاز، حداکثر تا ۷ روز کاری از تاریخ امضا قرارداد.</li>
                 <li>فراهم‌سازی دسترسی‌های لازم به محیط‌های سرویس‌دهنده (سرور، دیتابیس، سرویس‌های ابری، دامنه و سایر موارد مورد نیاز).</li>
-                <li>پرداخت تعهدات مالی خود مطابق با ماده ۱۳ به‌موقع.</li>
+                <li>پرداخت تعهدات مالی خود مطابق با ماده ۱۲ به‌موقع.</li>
                 <li>همکاری در تست‌های پذیرش کاربری (UAT) و ارائه تأییدیه نهایی حداکثر تا ۵ روز کاری پس از اعلام آمادگی پیمانکار.</li>
                 <li>تأمین اطلاعات برندینگ (لوگو، رنگ‌های سازمانی، هویت برند) برای طراحی وب‌سایت‌ها و دستیار هوشمند.</li>
                 <li>معرفی نماینده فنی و نماینده کسب‌وکار به‌عنوان نقاط ارتباطی اصلی با پیمانکار.</li>
-                <li>تأمین هزینه‌های جاری پروژه (سرور، دامنه و سرویس‌های ابری) مطابق ماده ۱۳-۴.</li>
+                <li>تأمین هزینه‌های جاری پروژه (سرور، دامنه و سرویس‌های ابری) مطابق ماده ۱۲-۴.</li>
             </ul>
         </div>
     </article>
@@ -1331,7 +1360,7 @@ img, svg { max-width: 100%; display: block; }
         </div>
         <div class="clause-body">
             <p>
-                کل پروژه در <strong>۵ ماه (۲۲ هفته)</strong> و در <strong>۷ نقطه تحویل کلیدی</strong> اجرا می‌شود. در هر نقطه تحویل، بخشی از محصول نهایی به کارفرما ارائه شده و مطابق ماده ۱۳، پرداخت مرتبط انجام می‌گیرد.
+                کل پروژه در <strong>۵ ماه (۲۲ هفته)</strong> و در <strong>۷ نقطه تحویل کلیدی</strong> اجرا می‌شود. در هر نقطه تحویل، بخشی از محصول نهایی به کارفرما ارائه شده و مطابق ماده ۱۲، پرداخت مرتبط انجام می‌گیرد.
             </p>
 
             <div class="timeline">
@@ -1453,17 +1482,6 @@ img, svg { max-width: 100%; display: block; }
                     </tbody>
                 </table>
             </div>
-
-            <p style="margin-top:22px;"><strong>۵-۲. فاز دوم (لایه هوشمند ایجنتیک):</strong></p>
-            <p>
-                همزمان با دوره پشتیبانی ۶ ماهه (پس از هفته ۲۲)، ایجنت‌های هوشمند زیر بر اساس نیاز واقعی هر دپارتمان کارفرما، به‌صورت سفارشی پیاده‌سازی می‌شود:
-            </p>
-            <ul>
-                <li><strong>AI Sales & Revenue Agent:</strong> تحلیل سودآوری، پیشنهاد فروش متقاطع، قیمت‌گذاری پویا، امتیازدهی لیدها و پیش‌بینی فروش.</li>
-                <li><strong>AI Management Copilot:</strong> پاسخ به سوالات مدیریتی به زبان طبیعی، هشدارهای هوشمند، تحلیل رفتار مشتری و گزارش‌های اجرایی خودکار.</li>
-                <li><strong>AI Operations Agent:</strong> پیش‌بینی تقاضا، بهینه‌سازی فرآیندهای عملیاتی، مدیریت خودکار موجودی، هشدار سررسید مطالبات و کاهش ضایعات.</li>
-            </ul>
-            <p style="font-size:0.85rem; color:var(--ink-3);">هر ایجنت با کدنویسی کاملاً اختصاصی و بر پایه همان زیرساخت تحویل‌شده فاز اول پیاده‌سازی می‌شود.</p>
         </div>
     </article>
 
@@ -1584,7 +1602,6 @@ img, svg { max-width: 100%; display: block; }
                 <li>ثبت پرداختی سوپرمارکت‌ها و مشاهده وضعیت تسویه</li>
                 <li>ثبت سفارش هوشمند و پیگیری وضعیت سفارش‌ها</li>
                 <li>دریافت لحظه‌ای محتوا، تصاویر، TDS و MSDS محصولات از تأمین‌کننده</li>
-                <li>دستیار هوشمند نماینده (فاز دوم): چت‌بات اختصاصی برای پاسخ به سوالات و راهنمایی فرآیند ثبت سفارش</li>
             </ul>
             <p style="font-size:0.85rem; color:var(--ink-3);"><strong>زمان تحویل: هفته ۱۲ (همراه با CRM)</strong></p>
         </div>
@@ -1626,43 +1643,12 @@ img, svg { max-width: 100%; display: block; }
         </div>
     </article>
 
-    <!-- CLAUSE 11 -->
+    <!-- CLAUSE 11 (was 12) -->
     <article class="clause reveal" id="c11">
         <div class="clause-head">
             <div class="clause-num"><span>۱۱</span></div>
             <div class="clause-head-text">
                 <div class="clause-kicker">ماده ۱۱</div>
-                <h2 class="clause-title">لایه هوشمند ایجنتیک — فاز دوم</h2>
-            </div>
-        </div>
-        <div class="clause-body">
-            <div class="callout">
-                <strong>زمان‌بندی فاز دوم:</strong> پس از تحویل فاز اول، استقرار کامل و یک ماه آموزش، تیم کارفرما در بازه پشتیبانی ۶ ماهه (نیمه اول سال ۱۴۰۶) با سیستم کار می‌کند. در همین بازه، ماژول‌های هوشمند ایجنتیک بر اساس نیازهای واقعی هر دپارتمان به‌صورت سفارشی پیاده‌سازی می‌شود.
-            </div>
-
-            <p><strong>سه دسته ایجنت‌های قابل پیاده‌سازی:</strong></p>
-            <ul>
-                <li><strong>AI Sales & Revenue Agent:</strong> تحلیل سودآوری هر کانال فروش، پیشنهاد فروش متقاطع (Cross-sell و Up-sell)، قیمت‌گذاری پویا بر اساس تقاضا و رقبا، امتیازدهی خودکار لیدها، پیش‌بینی دقیق فروش.</li>
-                <li><strong>AI Management Copilot:</strong> پاسخ لحظه‌ای به سوالات کلیدی کسب‌وکار به زبان طبیعی، هشدارهای هوشمند پیش از وقوع مشکلات، تحلیل رفتار مشتری و الگوهای خرید، رصد لحظه‌ای رقبا، گزارش‌های اجرایی خودکار.</li>
-                <li><strong>AI Operations Agent:</strong> پیش‌بینی دقیق تقاضا، بهینه‌سازی فرآیندهای عملیاتی، مدیریت خودکار موجودی و نقطه سفارش، هشدار سررسید مطالبات، کاهش ضایعات و بهبود بهره‌وری انبار.</li>
-            </ul>
-
-            <p><strong>شرایط پیاده‌سازی فاز دوم:</strong></p>
-            <ul>
-                <li>هر ایجنت با کدنویسی کاملاً اختصاصی و بر پایه همان زیرساخت تحویل‌شده فاز اول پیاده‌سازی می‌شود.</li>
-                <li>بدون هزینه توکن اضافی و مطابق با شرایط مالی مورد توافق.</li>
-                <li>اولویت‌بندی ایجنت‌ها بر اساس نیاز دپارتمان‌های مختلف کارفرما.</li>
-                <li>گزارش پیشرفت و تحویل هر ایجنت به‌صورت مستقل.</li>
-            </ul>
-        </div>
-    </article>
-
-    <!-- CLAUSE 12 -->
-    <article class="clause reveal" id="c12">
-        <div class="clause-head">
-            <div class="clause-num"><span>۱۲</span></div>
-            <div class="clause-head-text">
-                <div class="clause-kicker">ماده ۱۲</div>
                 <h2 class="clause-title">تحویل، آموزش و انتقال دانش</h2>
             </div>
         </div>
@@ -1670,7 +1656,7 @@ img, svg { max-width: 100%; display: block; }
             <p>
                 پس از تکمیل پروژه و تسویه نهایی، تمام دارایی‌های اختصاصی توسعه‌یافته به کارفرما تحویل داده می‌شود. هدف پیمانکار، ایجاد وابستگی فنی نبوده و توانمندسازی کامل تیم کارفرما است.
             </p>
-            <p><strong>۱۲-۱. موارد تحویلی:</strong></p>
+            <p><strong>۱۱-۱. موارد تحویلی:</strong></p>
             <ul>
                 <li>سورس‌کد کامل پروژه (ERP، CRM، وب‌سایت‌ها، دستیار رایا)</li>
                 <li>دسترسی کامل به Repository</li>
@@ -1679,7 +1665,7 @@ img, svg { max-width: 100%; display: block; }
                 <li>مستندات کامل مدیریت سیستم، کدها و فرآیندها</li>
                 <li>راهنمای کاربری برای دپارتمان‌های مختلف</li>
             </ul>
-            <p><strong>۱۲-۲. برنامه استقرار و آموزش (هفته ۱۸ تا ۲۲ — یک ماه):</strong></p>
+            <p><strong>۱۱-۲. برنامه استقرار و آموزش (هفته ۱۸ تا ۲۲ — یک ماه):</strong></p>
             <ul>
                 <li>استقرار سیستم در زیرساخت کارفرما</li>
                 <li>آموزش دپارتمان‌های مختلف (فروش، انبار، مالی، پشتیبانی)</li>
@@ -1689,17 +1675,17 @@ img, svg { max-width: 100%; display: block; }
         </div>
     </article>
 
-    <!-- CLAUSE 13 -->
-    <article class="clause reveal" id="c13">
+    <!-- CLAUSE 12 (was 13) -->
+    <article class="clause reveal" id="c12">
         <div class="clause-head">
-            <div class="clause-num"><span>۱۳</span></div>
+            <div class="clause-num"><span>۱۲</span></div>
             <div class="clause-head-text">
-                <div class="clause-kicker">ماده ۱۳</div>
+                <div class="clause-kicker">ماده ۱۲</div>
                 <h2 class="clause-title">تعهدات مالی و نحوه پرداخت</h2>
             </div>
         </div>
         <div class="clause-body">
-            <p><strong>۱۳-۱. مبلغ کل قرارداد:</strong> <strong>۱,۲۰۰,۰۰۰,۰۰۰ تومان</strong> (یک میلیارد و دویست میلیون تومان). تفکیک ارزش خدمات به شرح زیر است:</p>
+            <p><strong>۱۲-۱. مبلغ کل قرارداد:</strong> <strong>۱,۲۰۰,۰۰۰,۰۰۰ تومان</strong> (یک میلیارد و دویست میلیون تومان). تفکیک ارزش خدمات به شرح زیر است:</p>
 
             <div class="table-wrap">
                 <table>
@@ -1744,7 +1730,7 @@ img, svg { max-width: 100%; display: block; }
                 </table>
             </div>
 
-            <p style="margin-top:22px;"><strong>۱۳-۲. جدول پرداخت بر اساس نقاط تحویل:</strong></p>
+            <p style="margin-top:22px;"><strong>۱۲-۲. جدول پرداخت بر اساس نقاط تحویل:</strong></p>
             <div class="table-wrap">
                 <table>
                     <thead>
@@ -1852,12 +1838,12 @@ img, svg { max-width: 100%; display: block; }
 
             <div class="callout">
                 <strong>شرط پرداخت نهایی:</strong><br>
-                پرداخت ۱۰٪ نهایی (معادل ۱۲۰,۰۰۰,۰۰۰ تومان) فقط و فقط پس از تحویل نهایی و در صورت اعلام رضایت کامل کارفرما از عملکرد سیستم، استقرار موفق و آموزش کامل انجام می‌شود. در صورت عدم رضایت، طرفین مطابق ماده ۱۷-۳ (روش رسمی تحویل و تأیید) نسبت به رفع نقص اقدام خواهند نمود.
+                پرداخت ۱۰٪ نهایی (معادل ۱۲۰,۰۰۰,۰۰۰ تومان) فقط و فقط پس از تحویل نهایی و در صورت اعلام رضایت کامل کارفرما از عملکرد سیستم، استقرار موفق و آموزش کامل انجام می‌شود. در صورت عدم رضایت، طرفین مطابق ماده ۱۶-۳ (روش رسمی تحویل و تأیید) نسبت به رفع نقص اقدام خواهند نمود.
             </div>
 
-            <p><strong>۱۳-۳. نحوه پرداخت:</strong> کلیه مبالغ به ریال و از طریق واریز به حساب رسمی شرکت Code Packs (به نمایندگی آقای مبین شیخی) با شماره حساب <strong>IR500560611828005756984701</strong> انجام می‌شود. کارفرما موظف است فیش پرداخت را به پیمانکار ارائه دهد.</p>
+            <p><strong>۱۲-۳. نحوه پرداخت:</strong> کلیه مبالغ به ریال و از طریق واریز به حساب رسمی شرکت Code Packs (به نمایندگی آقای مبین شیخی) با شماره حساب <strong>IR500560611828005756984701</strong> انجام می‌شود. کارفرما موظف است فیش پرداخت را به پیمانکار ارائه دهد.</p>
 
-            <p><strong>۱۳-۴. هزینه‌های جاری (پس از تحویل — به عهده کارفرما):</strong></p>
+            <p><strong>۱۲-۴. هزینه‌های جاری (پس از تحویل — به عهده کارفرما):</strong></p>
             <ul>
                 <li><strong>دامنه:</strong> ثبت و تمدید سالانه دو دامنه (سایت شرکتی و فروشگاهی) — متغیر بر اساس انتخاب دامنه</li>
                 <li><strong>سرور:</strong> سرور اختصاصی متناسب با حجم پروژه</li>
@@ -1866,22 +1852,22 @@ img, svg { max-width: 100%; display: block; }
         </div>
     </article>
 
-    <!-- CLAUSE 14 -->
-    <article class="clause reveal" id="c14">
+    <!-- CLAUSE 13 (was 14) -->
+    <article class="clause reveal" id="c13">
         <div class="clause-head">
-            <div class="clause-num"><span>۱۴</span></div>
+            <div class="clause-num"><span>۱۳</span></div>
             <div class="clause-head-text">
-                <div class="clause-kicker">ماده ۱۴</div>
+                <div class="clause-kicker">ماده ۱۳</div>
                 <h2 class="clause-title">پشتیبانی رایگان و خدمات پس از تحویل</h2>
             </div>
         </div>
         <div class="clause-body">
-            <p><strong>۱۴-۱. بازه پشتیبانی رایگان:</strong></p>
+            <p><strong>۱۳-۱. بازه پشتیبانی رایگان:</strong></p>
             <p>
                 پس از اتمام فاز استقرار و آموزش (هفته ۲۲)، پیمانکار متعهد می‌شود <strong>۶ ماه پشتیبانی رایگان در نیمه اول سال ۱۴۰۶</strong> برای کارفرما ارائه دهد.
             </p>
 
-            <p><strong>۱۴-۲. خدمات پشتیبانی رایگان شامل:</strong></p>
+            <p><strong>۱۳-۲. خدمات پشتیبانی رایگان شامل:</strong></p>
             <ul>
                 <li><strong>امنیت:</strong> پایش مستمر امنیت، بروزرسانی گواهی‌های SSL، تشخیص و رفع آسیب‌پذیری‌ها.</li>
                 <li><strong>رفع باگ‌ها:</strong> شناسایی و رفع هرگونه خطا، باگ یا نقص فنی در ERP، CRM، وب‌سایت‌ها و دستیار هوشمند رایا.</li>
@@ -1891,20 +1877,15 @@ img, svg { max-width: 100%; display: block; }
                 <li><strong>تولید محتوای آموزشی:</strong> تهیه ویدیوهای آموزشی کوتاه و موشن‌گرافیک‌های آموزشی.</li>
                 <li><strong>سئو اولیه و ابتدایی:</strong> انجام اقدامات اولیه سئو برای بهبود رتبه وب‌سایت‌ها.</li>
             </ul>
-
-            <p><strong>۱۴-۳. فاز دوم (AI Agentic Layer):</strong></p>
-            <div class="callout">
-                در بازه پشتیبانی، ایجنت‌های هوشمند ایجنتیک بر اساس نیازهای واقعی هر دپارتمان کارفرما به‌صورت سفارشی پیاده‌سازی می‌شود. جزئیات فنی و شرایط مالی این فاز در ماده ۱۱ تشریح شده است.
-            </div>
         </div>
     </article>
 
-    <!-- CLAUSE 15 -->
-    <article class="clause reveal" id="c15">
+    <!-- CLAUSE 14 (was 15) -->
+    <article class="clause reveal" id="c14">
         <div class="clause-head">
-            <div class="clause-num"><span>۱۵</span></div>
+            <div class="clause-num"><span>۱۴</span></div>
             <div class="clause-head-text">
-                <div class="clause-kicker">ماده ۱۵</div>
+                <div class="clause-kicker">ماده ۱۴</div>
                 <h2 class="clause-title">مالکیت فکری و دارایی‌های دیجیتال</h2>
             </div>
         </div>
@@ -1918,12 +1899,12 @@ img, svg { max-width: 100%; display: block; }
         </div>
     </article>
 
-    <!-- CLAUSE 16 -->
-    <article class="clause reveal" id="c16">
+    <!-- CLAUSE 15 (was 16) -->
+    <article class="clause reveal" id="c15">
         <div class="clause-head">
-            <div class="clause-num"><span>۱۶</span></div>
+            <div class="clause-num"><span>۱۵</span></div>
             <div class="clause-head-text">
-                <div class="clause-kicker">ماده ۱۶</div>
+                <div class="clause-kicker">ماده ۱۵</div>
                 <h2 class="clause-title">محرمانگی</h2>
             </div>
         </div>
@@ -1937,31 +1918,31 @@ img, svg { max-width: 100%; display: block; }
         </div>
     </article>
 
-    <!-- CLAUSE 17 -->
-    <article class="clause reveal" id="c17">
+    <!-- CLAUSE 16 (was 17) -->
+    <article class="clause reveal" id="c16">
         <div class="clause-head">
-            <div class="clause-num"><span>۱۷</span></div>
+            <div class="clause-num"><span>۱۶</span></div>
             <div class="clause-head-text">
-                <div class="clause-kicker">ماده ۱۷</div>
+                <div class="clause-kicker">ماده ۱۶</div>
                 <h2 class="clause-title">تضمین‌ها و شرایط عمومی همکاری</h2>
             </div>
         </div>
         <div class="clause-body">
-            <p><strong>۱۷-۱. تضمین پیمانکار:</strong></p>
+            <p><strong>۱۶-۱. تضمین پیمانکار:</strong></p>
             <ul>
                 <li>تمامی خدمات مطابق با استانداردهای حرفه‌ای صنعت نرم‌افزار ارائه می‌شود.</li>
                 <li>محصول تحویلی عاری از هرگونه نقص عمده و باگ‌های بحرانی خواهد بود.</li>
                 <li>کلیه حقوق مربوط به استفاده از نرم‌افزارهای شخص ثالث دارای مجوز قانونی هستند.</li>
             </ul>
 
-            <p style="margin-top:16px;"><strong>۱۷-۲. تضمین کارفرما:</strong></p>
+            <p style="margin-top:16px;"><strong>۱۶-۲. تضمین کارفرما:</strong></p>
             <ul>
                 <li>کلیه اطلاعات و داده‌های ارائه‌شده به پیمانکار، صحیح، کامل و قانونی است.</li>
                 <li>دسترسی‌های لازم برای اجرای پروژه را به‌موقع فراهم می‌کند.</li>
                 <li>تعهدات مالی خود را به‌طور کامل و به‌موقع انجام می‌دهد.</li>
             </ul>
 
-            <p style="margin-top:16px;"><strong>۱۷-۳. روش رسمی تحویل و تأیید (Acceptance):</strong></p>
+            <p style="margin-top:16px;"><strong>۱۶-۳. روش رسمی تحویل و تأیید (Acceptance):</strong></p>
             <ul>
                 <li>پیمانکار پس از اتمام هر نقطه تحویل، مراتب آمادگی تحویل را به‌صورت کتبی (ایمیل رسمی) به کارفرما اعلام می‌کند.</li>
                 <li>کارفرما حداکثر تا <strong>۵ روز کاری</strong> پس از اعلام، تحویل را بررسی و نتیجه (تأیید یا اعلام نقص) را به‌صورت کتبی اعلام می‌کند.</li>
@@ -2015,13 +1996,6 @@ img, svg { max-width: 100%; display: block; }
                 <div class="appendix">
                     <span class="badge">E</span>
                     <div class="txt">
-                        <strong>برنامه فاز دوم</strong>
-                        <span>ایجنت‌های هوشمند ایجنتیک به‌صورت تفصیلی</span>
-                    </div>
-                </div>
-                <div class="appendix">
-                    <span class="badge">F</span>
-                    <div class="txt">
                         <strong>معیارهای پذیرش و تست</strong>
                         <span>سند UAT و معیارهای تست تحویل</span>
                     </div>
@@ -2039,7 +2013,8 @@ img, svg { max-width: 100%; display: block; }
             </p>
         </div>
 
-        <div class="sig-grid">
+        <!-- کارفرما -->
+        <div class="sig-primary-row">
             <div class="sig-card">
                 <div class="sig-party">
                     <div class="sig-avatar">AK</div>
@@ -2054,36 +2029,54 @@ img, svg { max-width: 100%; display: block; }
                     <div class="date">تاریخ: [تاریخ شمسی] ([تاریخ میلادی])</div>
                 </div>
             </div>
+        </div>
 
-            <div class="sig-secondary-grid">
-                <div class="sig-card">
-                    <div class="sig-party">
-                        <div class="sig-avatar">AB</div>
-                        <div class="sig-info">
-                            <div class="name">Code Packs</div>
-                            <div class="role">آقای امیرمحمد بهرامی / مدیرعامل (CTO)</div>
-                        </div>
-                    </div>
-                    <div class="sig-blank">
-                        <div class="line">امضا و مهر</div>
-                        <div class="dotted"></div>
-                        <div class="date">تاریخ: [تاریخ شمسی]</div>
+        <!-- پیمانکار -->
+        <div class="sig-team-label">تیم پیمانکار — Code Packs</div>
+
+        <div class="sig-team-grid">
+            <div class="sig-card">
+                <div class="sig-party">
+                    <div class="sig-avatar">AB</div>
+                    <div class="sig-info">
+                        <div class="name">Code Packs</div>
+                        <div class="role">امیرمحمد بهرامی / مدیرعامل (CTO)</div>
                     </div>
                 </div>
+                <div class="sig-blank">
+                    <div class="line">امضا و مهر</div>
+                    <div class="dotted"></div>
+                    <div class="date">تاریخ: [تاریخ شمسی]</div>
+                </div>
+            </div>
 
-                <div class="sig-card">
-                    <div class="sig-party">
-                        <div class="sig-avatar">MS</div>
-                        <div class="sig-info">
-                            <div class="name">Code Packs</div>
-                            <div class="role">آقای مبین شیخی / رئیس هیئت مدیره (CEO)</div>
-                        </div>
+            <div class="sig-card">
+                <div class="sig-party">
+                    <div class="sig-avatar">MS</div>
+                    <div class="sig-info">
+                        <div class="name">Code Packs</div>
+                        <div class="role">مبین شیخی / رئیس هیئت مدیره (CEO)</div>
                     </div>
-                    <div class="sig-blank">
-                        <div class="line">امضا و مهر</div>
-                        <div class="dotted"></div>
-                        <div class="date">تاریخ: [تاریخ شمسی]</div>
+                </div>
+                <div class="sig-blank">
+                    <div class="line">امضا و مهر</div>
+                    <div class="dotted"></div>
+                    <div class="date">تاریخ: [تاریخ شمسی]</div>
+                </div>
+            </div>
+
+            <div class="sig-card">
+                <div class="sig-party">
+                    <div class="sig-avatar">AR</div>
+                    <div class="sig-info">
+                        <div class="name">Code Packs</div>
+                        <div class="role">امیر رکابدار / مدیر تحلیل فرآیند و استقرار پروژه</div>
                     </div>
+                </div>
+                <div class="sig-blank">
+                    <div class="line">امضا و مهر</div>
+                    <div class="dotted"></div>
+                    <div class="date">تاریخ: [تاریخ شمسی]</div>
                 </div>
             </div>
         </div>
